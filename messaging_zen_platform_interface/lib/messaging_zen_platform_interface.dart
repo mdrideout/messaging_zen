@@ -1,0 +1,53 @@
+import 'dart:async';
+
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
+import 'method_channel_messaging_zen.dart';
+
+/// The interface that implementations of messaging_zen must implement.
+///
+/// Platform implementations should extend this class rather than implement it as `url_launcher`
+/// does not consider newly added methods to be breaking changes. Extending this class
+/// (using `extends`) ensures that the subclass will get the default implementation, while
+/// platform implementations that `implements` this interface will be broken by newly added
+/// [UrlLauncherPlatform] methods.
+abstract class MessagingZenPlatform extends PlatformInterface {
+  /// Constructs a MessagingZenPlatform
+  MessagingZenPlatform() : super(token: _token);
+
+  /// Platform Interface Verification Pieces (see PlatformInterface docs for reasons)
+  static final Object _token = Object();
+
+  /// Create an instance from the MethodChannels implementation
+  static MessagingZenPlatform _instance = MethodChannelMessagingZen();
+
+  /// The default instance of [MessagingZenPlatform] to use
+  ///
+  /// Defaults to [MethodChannelMessagingZen].
+  static MessagingZenPlatform get instance => _instance;
+
+  /// Platform-specific plugins should set this with their own platform-specific
+  /// class that extends [UrlLauncherPlatform] when they register themselves.
+  static set instance(MessagingZenPlatform instance) {
+    PlatformInterface.verify(instance, _token);
+    _instance = instance;
+  }
+
+  /// Functions that should be implemented by platform specific interfaces
+
+  /// Initialize the Zendesk Messaging SDK
+  /// Get the keys from the Zendesk Admin Center (channels -> messaging)
+  /// Platform implementations utilize environment variables to initialize.
+  /// Use --dart-define to set these at build.
+  /// - WEB_SCRIPT_ID
+  /// - WEB_SCRIPT_SRC
+  /// - IOS_CHANNEL_KEY
+  /// - ANDROID_CHANNEL_KEY
+  Future<void> initialize();
+
+  /// Check Initialized
+  Future<bool> checkInitialized();
+
+  /// Show the Zendesk Messaging Interface
+  Future<void> show();
+}

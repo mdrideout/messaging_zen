@@ -1,0 +1,27 @@
+name: messaging_zen_ios
+description: The iOS implementation of the Zendesk Messaging SDK
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+  flutter: ">=2.10.0"
+
+flutter:
+  plugin:
+    implements: messaging_zen
+    platforms:
+      ios:
+        pluginClass: MessagingZenIosPlugin
+        dartPluginClass: MessagingZenIos
+
+dependencies:
+  flutter:
+    sdk: flutter
+  messaging_zen_platform_interface:
+    path: ../messaging_zen_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0

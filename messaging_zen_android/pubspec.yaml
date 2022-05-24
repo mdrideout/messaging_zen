@@ -1,0 +1,29 @@
+name: messaging_zen_android
+description: The Android implementation of the Zendesk Messaging SDK
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+  flutter: ">=2.10.0"
+
+flutter:
+  plugin:
+    implements: messaging_zen
+    platforms:
+      android:
+        package: studio.rideout.messaging_zen_android
+        pluginClass: MessagingZenAndroidPlugin
+        dartPluginClass: MessagingZenAndroid
+
+dependencies:
+  flutter:
+    sdk: flutter
+  messaging_zen_platform_interface:
+    path: ../messaging_zen_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  plugin_platform_interface: ^2.1.2

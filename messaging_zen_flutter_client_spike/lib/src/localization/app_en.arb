@@ -1,0 +1,6 @@
+{
+  "appTitle": "zendeskspike",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}

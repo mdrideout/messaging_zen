@@ -13,14 +13,18 @@ class MessagingZenAndroid extends MessagingZenPlatform {
     MessagingZenPlatform.instance = MessagingZenAndroid();
   }
 
-  /// Initialize the Zendesk Messaging SDK
   @override
-  Future<void> initialize({required String androidChannelKey, required String iosChannelKey}) {
+  Future<void> initialize() {
     // TODO: implement initialize
     throw UnimplementedError();
   }
 
-  /// Show the Zendesk Messaging Interface
+  @override
+  Future<bool> checkInitialized() {
+    // TODO: implement checkInitialized
+    throw UnimplementedError();
+  }
+
   @override
   Future<void> show() async {
     print("show() function called on federated messaging_zen_android plugin - DART CODE.");

@@ -15,6 +15,7 @@ The iOS implementation of the Zendesk Messaging SDK
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'ZendeskSDKMessaging', '~>2.4.0'
   s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.

@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:messaging_zen/messaging_zen.dart';
+import 'package:messaging_zen_flutter_client_spike/src/common/constants.dart';
 
 class ZendeskScreen extends StatefulWidget {
   const ZendeskScreen({Key? key}) : super(key: key);
@@ -11,6 +13,11 @@ class ZendeskScreen extends StatefulWidget {
 }
 
 class _ZendeskScreenState extends State<ZendeskScreen> {
+  final MessagingZen _messagingZen = MessagingZen(
+    webScriptId: messagingZenWebScriptId,
+    webScriptSrc: messagingZenWebScriptSrc,
+  );
+
   @override
   void initState() {
     super.initState();
@@ -24,9 +31,12 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.chat),
-        onPressed: () {
-          // Run Zendesk Function
-          MessagingZen.show();
+        onPressed: () async {
+          // Initialize Zendesk Messaging
+          await _messagingZen.initialize();
+
+          // Show the Zendesk Messaging interface
+          await _messagingZen.show();
         },
       ),
       body: Center(

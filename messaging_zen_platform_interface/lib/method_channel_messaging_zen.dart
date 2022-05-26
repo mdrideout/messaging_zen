@@ -11,20 +11,25 @@ const MethodChannel _channel = MethodChannel('plugins.flutter.io/messaging_zen')
 class MethodChannelMessagingZen implements MessagingZenPlatform {
   /// Initialize the Zendesk Messaging SDK
   @override
-  Future<void> initialize() async {
+  Future<void> initialize({
+    String? webScriptId,
+    String? webScriptSrc,
+    String? iosChannelKey,
+    String? androidChannelKey,
+  }) async {
     throw UnimplementedError('initialize() has not been implemented. TODO: Call a platform channel.');
   }
 
   /// Check whether Zendesk Messaging SDK is initialized
   @override
-  Future<bool> checkInitialized() {
+  Future<bool> checkInitialized({String? webScriptId}) {
     // TODO: implement checkInitialized
     throw UnimplementedError();
   }
 
   /// Show the Zendesk Messaging Interface
   @override
-  Future<void> show() async {
+  Future<void> show({String? webScriptId}) async {
     print("show() function called on federated messaging_zen_platform_interface plugin.");
 
     return _channel.invokeMethod<void>('show');

@@ -14,19 +14,24 @@ class MessagingZenAndroid extends MessagingZenPlatform {
   }
 
   @override
-  Future<void> initialize() {
+  Future<void> initialize({
+    String? webScriptId,
+    String? webScriptSrc,
+    String? iosChannelKey,
+    String? androidChannelKey,
+  }) {
     // TODO: implement initialize
     throw UnimplementedError();
   }
 
-  @override
-  Future<bool> checkInitialized() {
-    // TODO: implement checkInitialized
-    throw UnimplementedError();
-  }
+  // @override
+  // Future<bool> checkInitialized({String? webScriptId}) {
+  //   // TODO: implement checkInitialized
+  //   throw UnimplementedError();
+  // }
 
   @override
-  Future<void> show() async {
+  Future<void> show({String? webScriptId}) async {
     print("show() function called on federated messaging_zen_android plugin - DART CODE.");
 
     // Call the native Kotlin code

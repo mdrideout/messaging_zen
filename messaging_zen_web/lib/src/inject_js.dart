@@ -79,7 +79,7 @@ Future<void> injectJavaScriptSrc({required String scriptId, required String scri
 /// Returns true or false based on whether the script exists in the HTML DOM
 /// [scriptId] should not include the "#" symbol
 bool checkScriptExists(String scriptId) {
-  html.Element? _scriptExists = html.document.getElementById("#$scriptId");
+  html.Element? _scriptExists = html.document.getElementById(scriptId);
 
   // Only add if the script does not exist to avoid adding multiple instances to the DOM
   if (_scriptExists == null) {

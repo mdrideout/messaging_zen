@@ -37,17 +37,17 @@ abstract class MessagingZenPlatform extends PlatformInterface {
 
   /// Initialize the Zendesk Messaging SDK
   /// Get the keys from the Zendesk Admin Center (channels -> messaging)
-  /// Platform implementations utilize environment variables to initialize.
-  /// Use --dart-define to set these at build.
-  /// - WEB_SCRIPT_ID
-  /// - WEB_SCRIPT_SRC
-  /// - IOS_CHANNEL_KEY
-  /// - ANDROID_CHANNEL_KEY
-  Future<void> initialize();
+  /// Recommend keeping these values in environment variables.
+  Future<void> initialize({
+    String? webScriptId,
+    String? webScriptSrc,
+    String? iosChannelKey,
+    String? androidChannelKey,
+  });
 
-  /// Check Initialized
-  Future<bool> checkInitialized();
+  // /// Check Initialized
+  // Future<bool> checkInitialized({String? webScriptId});
 
   /// Show the Zendesk Messaging Interface
-  Future<void> show();
+  Future<void> show({String? webScriptId});
 }

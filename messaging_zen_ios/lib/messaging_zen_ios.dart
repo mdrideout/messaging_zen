@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:messaging_zen_ios/method_call_handler.dart';
 import 'package:messaging_zen_platform_interface/messaging_zen_platform_interface.dart';
 
 /// A named channel for communicating with platform plugins using asynchronous method calls.
@@ -19,8 +20,22 @@ class MessagingZenIos extends MessagingZenPlatform {
     String? webScriptSrc,
     String? iosChannelKey,
     String? androidChannelKey,
-  }) {
-    throw UnimplementedError('initialize() has not been implemented on iOS');
+  }) async {
+    try {
+      print("initialize() function called on federated messaging_zen_ios plugin - DART CODE.");
+
+      // Start observing channel messages (made from native code back to Flutter)
+      _channel.setMethodCallHandler(methodCallHandler);
+
+      final bool result = await _channel.invokeMethod('initialize');
+
+      print("Returned result from Swift: $result");
+
+      return;
+    } catch (e) {
+      print("Initialize call failed.");
+      rethrow;
+    }
   }
 
   // @override
@@ -40,4 +55,11 @@ class MessagingZenIos extends MessagingZenPlatform {
 
     return;
   }
+
+  // /// On Method Call
+  // /// Handles method channel calls made from native code back to Flutter
+  // static Future<dynamic> _onMethodCall(MethodCall call) async {
+  //   print(
+  //       "_onMethodCall handling message from iOS native Swift code: $call\ncall method: ${call.method}\ncall args: ${call.arguments}");
+  // }
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:messaging_zen_ios/messaging_zen_ios.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +16,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Widget? chatWidget;
+  final MessagingZenIos _messagingZeniOS = MessagingZenIos();
+
   @override
   void initState() {
     super.initState();
@@ -23,13 +27,16 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
     try {
+      Widget? _messagingZenWidget = await _messagingZeniOS.show();
+
+      setState(() {
+        chatWidget = _messagingZenWidget;
+      });
+
       print("Try something");
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      throw ("Error initializing platform state.");
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -46,7 +53,18 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Example'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Below is a Flutter hosted native iOS view.'),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 200,
+                width: 200,
+                child: chatWidget,
+              ),
+            ],
+          ),
         ),
       ),
     );

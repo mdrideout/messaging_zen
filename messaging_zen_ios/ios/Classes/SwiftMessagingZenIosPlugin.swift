@@ -18,6 +18,10 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
         let instance = SwiftMessagingZenIosPlugin(channel: channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
+        
+        let factory = FLNativeViewFactory(messenger: registrar.messenger())
+        registrar.register(factory, withId: "messagingZenIosView")
+        
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

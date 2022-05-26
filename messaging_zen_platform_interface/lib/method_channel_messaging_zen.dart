@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'messaging_zen_platform_interface.dart';
@@ -29,9 +30,10 @@ class MethodChannelMessagingZen implements MessagingZenPlatform {
 
   /// Show the Zendesk Messaging Interface
   @override
-  Future<void> show({String? webScriptId}) async {
-    print("show() function called on federated messaging_zen_platform_interface plugin.");
-
-    return _channel.invokeMethod<void>('show');
+  Future<Widget?> show({String? webScriptId}) async {
+    // print("show() function called on federated messaging_zen_platform_interface plugin.");
+    //
+    // return _channel.invokeMethod<void>('show');
+    throw UnimplementedError();
   }
 }

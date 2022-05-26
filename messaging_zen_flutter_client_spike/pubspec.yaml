@@ -13,6 +13,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   logger: ^1.1.0
+  flutter_portal: 1.0.0
   messaging_zen:
     path: ../messaging_zen
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:messaging_zen_platform_interface/messaging_zen_platform_interface.dart';
@@ -85,11 +86,15 @@ class MessagingZenPlugin extends MessagingZenPlatform {
 
   /// Show Zendesk Messenger
   /// Sends the command to the Zendesk SDK API open the chat interface.
+  /// Web does not need to return a widget since the UI is injected as an iFrame overlay
   @override
-  Future<void> show({String? webScriptId}) async {
+  Future<Widget?> show({String? webScriptId}) async {
     try {
       // Open Zendesk Messenger
       openZendeskMessenger();
+
+      // Return null instead of a widget
+      return null;
     } catch (e) {
       logger.e(
           "Failed to open the zendesk messenger interface. The Web SDK script may not have been loaded. Has it MessagingZen been initialized?");

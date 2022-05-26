@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:messaging_zen_platform_interface/messaging_zen_platform_interface.dart';
 
 /// A named channel for communicating with platform plugins using asynchronous method calls.
@@ -31,7 +33,7 @@ class MessagingZenAndroid extends MessagingZenPlatform {
   // }
 
   @override
-  Future<void> show({String? webScriptId}) async {
+  Future<Widget?> show({String? webScriptId}) async {
     print("show() function called on federated messaging_zen_android plugin - DART CODE.");
 
     // Call the native Kotlin code
@@ -39,6 +41,6 @@ class MessagingZenAndroid extends MessagingZenPlatform {
 
     print("Returned result from Kotlin: $result");
 
-    return;
+    return const Text("TODO: Implement android show native widget");
   }
 }

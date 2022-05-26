@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:messaging_zen_platform_interface/messaging_zen_platform_interface.dart';
 
 /// Wrapper class for callable methods
@@ -25,7 +26,7 @@ class MessagingZen {
   // }
 
   /// Show the Zendesk Messaging interface
-  Future<void> show() async {
+  Future<Widget?> show() async {
     return await MessagingZenPlatform.instance.show(webScriptId: webScriptId);
   }
 }

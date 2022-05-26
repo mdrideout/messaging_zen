@@ -1,7 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:messaging_zen/messaging_zen.dart';
 import 'package:messaging_zen_flutter_client_spike/src/common/constants.dart';
+
+import 'chat_window_portal.dart';
 
 class ZendeskScreen extends StatefulWidget {
   const ZendeskScreen({Key? key}) : super(key: key);
@@ -18,6 +21,10 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
     webScriptSrc: messagingZenWebScriptSrc,
   );
 
+  // State of chat
+  Widget? chatWidget;
+  bool chatWidgetVisible = false;
+
   @override
   void initState() {
     super.initState();
@@ -30,21 +37,39 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
         title: const Text("Zendesk Spike"),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.chat),
+        child: PortalTarget(
+          visible: chatWidgetVisible,
+          anchor: const Aligned(
+            follower: Alignment.bottomRight,
+            target: Alignment.topRight,
+            offset: Offset(15, -25),
+          ),
+          portalFollower: ChatWindowPortal(chatWidget: chatWidget),
+          child: const Icon(Icons.chat),
+        ),
         onPressed: () async {
           // Initialize Zendesk Messaging
           await _messagingZen.initialize();
 
+          Widget? _messagingZenWidget = await _messagingZen.show();
+
           // Show the Zendesk Messaging interface
-          await _messagingZen.show();
+          setState(() {
+            chatWidget = _messagingZenWidget;
+            if (_messagingZenWidget != null) {
+              chatWidgetVisible = !chatWidgetVisible;
+            }
+          });
         },
       ),
       body: Center(
         child: Column(
-          children: const [
+          children: [
+            SizedBox(height: 10.0),
             Text("Zendesk implementation."),
             SizedBox(height: 10.0),
             Text("This screen should allow a zendesk_messaging chat to be opened."),
+            SizedBox(height: 10.0),
           ],
         ),
       ),

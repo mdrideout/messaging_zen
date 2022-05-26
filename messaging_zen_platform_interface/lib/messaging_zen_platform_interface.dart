@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'method_channel_messaging_zen.dart';
@@ -49,5 +50,5 @@ abstract class MessagingZenPlatform extends PlatformInterface {
   // Future<bool> checkInitialized({String? webScriptId});
 
   /// Show the Zendesk Messaging Interface
-  Future<void> show({String? webScriptId});
+  Future<Widget?> show({String? webScriptId});
 }

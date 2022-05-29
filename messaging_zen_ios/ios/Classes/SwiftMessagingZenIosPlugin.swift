@@ -27,7 +27,6 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         print("\(TAG) - Swift handle() function called.")
         
-        
         let method = call.method;
         let arguments = call.arguments as? Dictionary<String, Any>
         
@@ -36,17 +35,15 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
         
         switch(method) {
         case "initialize":
-            print("Calling invokeMethod from swift back to Flutter.")
-            self.channel.invokeMethod(InvokableMethods.logger.rawValue, arguments: ["arg1": "arg1 value", "arg2": "arg2 value"])
+            self.channel.invokeMethod(InvokableMethods.logger.rawValue, arguments: "\(TAG) - Calling messagingZen.initialize()")
+            let key: String = (arguments?["key"] ?? "") as! String
             
-            print("Calling messagingZen initialize function")
-            let initResult = messagingZen.initialize(key: "to be provided")
-            
-            result(initResult)
+            // Pass the FlutterResult closure to the initialize function
+            messagingZen.initialize(key: key, completionHandler: result)
             break;
             
         case "show":
-            result("\(TAG) - show() function called on federated messaging_zen_ios plugin - SWIFT CODE.")
+            result("\(TAG) - Calling messagingZen.show()")
             break
             
         default: result(FlutterMethodNotImplemented)

@@ -11,26 +11,23 @@ public class MessagingZen {
         self.plugin = plugin
     }
     
-    // TODO: Test if InvokableMethodsEnum can be used here from the self.plugin reference.
-    
-    func initialize(key: String) -> Bool {
+    /// Initialize
+    /// Calls Zendesk.initialize with the channel key, and it's completion handler uses the provided
+    /// closure [FlutterResult] to return the result back to Flutter.
+    func initialize(key: String, completionHandler: @escaping FlutterResult){
         print("\(self.TAG) - Initializing MessagingZen with iOS key: \(key)\n")
-        
-        var initResult: Bool = false;
         
         Zendesk.initialize(withChannelKey: key, messagingFactory: DefaultMessagingFactory()) { result in
             if case let .failure(error) = result {
-                print("\(self.TAG) - Zendesk Messaging did not initialize.\nError: \(error.localizedDescription)")
-                //              self.channel?.invokeMethod("test init failure response.", arguments: ["error": error.localizedDescription])
-                initResult = false
+                self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Zendesk Messaging did not initialize.\nError: \(error.localizedDescription)")
+                completionHandler(false)
             } else {
-                print("\(self.TAG) - Zendesk Messaging initialization was successful.")
-                //              self.channel?.invokeMethod("test init success response", arguments: [])
-                initResult = true
+                self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Zendesk Messaging initialization was successful.")
+                completionHandler(true)
             }
             
         }
-        
-        return initResult
+    
     }
+    
 }

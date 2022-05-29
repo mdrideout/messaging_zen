@@ -25,18 +25,19 @@ class MessagingZenIos extends MessagingZenPlatform {
     String? androidChannelKey,
   }) async {
     try {
-      print("initialize() function called on federated messaging_zen_ios plugin - DART CODE.");
+      debugPrint("initialize() function called on federated messaging_zen_ios plugin - DART CODE.");
 
       // Start observing channel messages (made from native code back to Flutter)
       _channel.setMethodCallHandler(methodCallHandler);
 
-      final bool result = await _channel.invokeMethod('initialize');
+      // Call the native initialize function
+      final bool result = await _channel.invokeMethod('initialize', {"key": iosChannelKey});
 
-      print("Returned result from Swift: $result");
+      debugPrint("initialize() result from Swift: $result");
 
       return;
     } catch (e) {
-      print("Initialize call failed.");
+      debugPrint("Initialize call to swift failed.");
       rethrow;
     }
   }

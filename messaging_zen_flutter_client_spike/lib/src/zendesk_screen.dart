@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:messaging_zen/messaging_zen.dart';
@@ -19,6 +18,8 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
   final MessagingZen _messagingZen = MessagingZen(
     webScriptId: messagingZenWebScriptId,
     webScriptSrc: messagingZenWebScriptSrc,
+    androidChannelKey: messagingZenAndroidChannelKey,
+    iosChannelKey: messagingZenIosChannelKey,
   );
 
   // State of chat
@@ -68,7 +69,7 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
             SizedBox(height: 10.0),
             Text("Zendesk implementation."),
             SizedBox(height: 10.0),
-            Text("This screen should allow a zendesk_messaging chat to be opened."),
+            Text("This screen should allow a zendesk messaging channel chat to be opened."),
             SizedBox(height: 10.0),
           ],
         ),

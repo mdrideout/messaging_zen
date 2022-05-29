@@ -1,15 +1,31 @@
-# messaging_zen
+# MessagingZen
 
-A Zendesk Messaging federated Flutter plugin.
+A Zendesk Messaging federated Flutter plugin for Android, iOS, and Web. This uses the newer Zendesk "messaging" channel.
 
-## Getting Started
+- Web: Implements the [Zendesk Messaging Web SDK](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/web/getting_started/) 
+with Dart and JS interop, to inject the SDK and perform API commands against it.
+- Android: Implements the [Zendesk Messaging Android SDK](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/android/getting_started/)
+- iOS: Implements the [Zendesk Messaging iOS SDK](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/ios/getting_started/),
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+# Implementation
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Example
+- See the [messaging_zen_flutter_client_spike](https://github.com/mdrideout/messaging_zen/tree/main/messaging_zen_flutter_client_spike)
+repository for an implementation example. Channel keys and web SDK params can be loaded with --dart-define.
+  
+```bash
 
+$ show an example run command here with the --dart-define keys
+
+```
+
+## Initialize
+Initialize must take place before show() can be called.
+
+```dart
+
+ // Add code example here
+
+```
+
+## Show

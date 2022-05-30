@@ -19,8 +19,13 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
         
+        // Register a demo UIView to be hosted in flutter
         let factory = FLNativeViewFactory(messenger: registrar.messenger())
-        registrar.register(factory, withId: "messagingZenIosView")
+        registrar.register(factory, withId: "messagingZenIosDemoView")
+        
+        // Register the Zendesk Messaging UIView to be hosted in Flutter
+        let zendeskMessengerFactory = FLZendeskMessengerViewFactory(messenger: registrar.messenger(), channel: channel)
+        registrar.register(zendeskMessengerFactory, withId: "messagingZenIOSZendeskMessengerUIView")
         
     }
     
@@ -40,10 +45,13 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
             
             // Pass the FlutterResult closure to the initialize function
             messagingZen.initialize(key: key, completionHandler: result)
-            break;
+            break
             
         case "show":
-            result("\(TAG) - Calling messagingZen.show()")
+            self.channel.invokeMethod(InvokableMethods.logger.rawValue, arguments: "\(TAG) - Calling messagingZen.show()")
+            
+            // Pass the FlutterResult closure to the show function
+            messagingZen.show(completionHandler: result)
             break
             
         default: result(FlutterMethodNotImplemented)

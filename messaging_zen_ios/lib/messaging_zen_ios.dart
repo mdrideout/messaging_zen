@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:messaging_zen_ios/method_call_handler.dart';
+import 'package:messaging_zen_ios/widgets/messaging_zen_zendesk_messenger_uiview_widget.dart';
 import 'package:messaging_zen_platform_interface/messaging_zen_platform_interface.dart';
 
-import 'widgets/native_view_widget.dart';
+import 'widgets/messaging_zen_ios_demo_view_widget.dart';
 
 /// A named channel for communicating with platform plugins using asynchronous method calls.
 const MethodChannel _channel = MethodChannel('plugins.flutter.io/messaging_zen_ios');
@@ -55,13 +56,28 @@ class MessagingZenIos extends MessagingZenPlatform {
     // TODO: This will likely have to call native SDK API call
 
     // Call the native Swift code
-    final String? result = await _channel.invokeMethod('show');
+    final bool? result = await _channel.invokeMethod('show');
 
-    print("Returned result from Swift: $result");
+    print("Returned result from Swift show(): $result");
 
     // Load the native view
 
-    return const IOSCompositionWidget();
+    return const MessagingZenIOSZendeskMessengerUIView();
+  }
+
+  Future<Widget?> showDemo({String? webScriptId}) async {
+    print("showDemo() function called on federated messaging_zen_ios plugin - DART CODE.");
+
+    // TODO: This will likely have to call native SDK API call
+
+    // Call the native Swift code
+    final bool? result = await _channel.invokeMethod('show');
+
+    print("Returned result from Swift showDemo(): $result");
+
+    // Load the native view
+
+    return const MessagingZenIOSDemoView();
   }
 
   // /// On Method Call

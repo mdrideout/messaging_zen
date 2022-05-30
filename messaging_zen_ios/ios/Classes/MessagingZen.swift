@@ -15,7 +15,7 @@ public class MessagingZen {
     /// Calls Zendesk.initialize with the channel key, and it's completion handler uses the provided
     /// closure [FlutterResult] to return the result back to Flutter.
     func initialize(key: String, completionHandler: @escaping FlutterResult){
-        print("\(self.TAG) - Initializing MessagingZen with iOS key: \(key)\n")
+        self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Initializing MessagingZen with iOS key: \(key)\n")
         
         Zendesk.initialize(withChannelKey: key, messagingFactory: DefaultMessagingFactory()) { result in
             if case let .failure(error) = result {
@@ -28,6 +28,24 @@ public class MessagingZen {
             
         }
     
+    }
+    
+    /// Show
+    /// Calls Zendesk.show to reveal the native zendesk messaging view
+    /// Registrar is the SwiftMessagingZenIosPlugin FlutterPluginRegistrar
+    func show(completionHandler: @escaping FlutterResult) {
+        self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Calling Zendesk.show()")
+        
+//        guard let viewController = Zendesk.instance?.messaging?.messagingViewController() else {
+//            self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Zendesk.instance?.messaging?.messagingViewController() failed.")
+//            completionHandler(false)
+//            return
+//        }
+//        
+        // THIS CALL MAY BE OBSOLETE SINCE AFTER INITIALIZE, WE MAY BE ABLE TO JUST CALL THE HOSTED VIEW BY ID FROM FLUTTER
+        // USING UiKitView
+        
+        completionHandler(true)
     }
     
 }

@@ -10,11 +10,11 @@ class ChatWindowPortal extends StatelessWidget {
 
     if (_chatWidget != null) {
       return SizedBox(
-        width: 250,
-        height: 350,
+        width: 300,
+        height: 600,
         child: Material(
           elevation: 6,
-          child: chatWidget,
+          child: SingleChildScrollView(child: chatWidget),
         ),
       );
     } else {

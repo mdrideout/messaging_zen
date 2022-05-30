@@ -45,7 +45,7 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
             target: Alignment.topRight,
             offset: Offset(15, -25),
           ),
-          portalFollower: ChatWindowPortal(chatWidget: chatWidget),
+          portalFollower: ChatWindowPortal(chatWidget: Text("nothing")),
           child: const Icon(Icons.chat),
         ),
         onPressed: () async {
@@ -58,7 +58,7 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
           setState(() {
             chatWidget = _messagingZenWidget;
             if (_messagingZenWidget != null) {
-              chatWidgetVisible = !chatWidgetVisible;
+              // chatWidgetVisible = !chatWidgetVisible;
             }
           });
         },
@@ -71,6 +71,9 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
             SizedBox(height: 10.0),
             Text("This screen should allow a zendesk messaging channel chat to be opened."),
             SizedBox(height: 10.0),
+            Expanded(
+              child: (chatWidget != null) ? chatWidget! : Text("chat widget null"),
+            ),
           ],
         ),
       ),

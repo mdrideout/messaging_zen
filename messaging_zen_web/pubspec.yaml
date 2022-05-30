@@ -1,0 +1,34 @@
+name: messaging_zen_web
+description: The Web implementation of the Zendesk Messaging SDK
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+  flutter: ">=2.10.0"
+
+flutter:
+  plugin:
+    implements: messaging_zen
+    platforms:
+      web:
+        pluginClass: MessagingZenPlugin
+        fileName: messaging_zen_web.dart
+
+  assets:
+    - assets/js/messaging_zen_web_commands.js
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  logger: ^1.1.0
+  js: ^0.6.3
+  messaging_zen_platform_interface:
+    path: ../messaging_zen_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0

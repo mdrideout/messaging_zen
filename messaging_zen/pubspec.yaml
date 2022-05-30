@@ -1,0 +1,39 @@
+name: messaging_zen
+description: A Zendesk Messaging federated Flutter plugin.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+  flutter: ">=2.10.0"
+
+# The following section is specific to Flutter.
+flutter:
+  plugin:
+    platforms:
+      web:
+        default_package: messaging_zen_web
+      ios:
+        default_package: messaging_zen_ios
+      android:
+        default_package: messaging_zen_android
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  messaging_zen_platform_interface:
+    path: ../messaging_zen_platform_interface
+  messaging_zen_web:
+    path: ../messaging_zen_web
+  messaging_zen_ios:
+    path: ../messaging_zen_ios
+  messaging_zen_android:
+    path: ../messaging_zen_android
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  plugin_platform_interface: ^2.1.2

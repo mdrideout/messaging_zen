@@ -19,7 +19,7 @@ $ show an example run command here with the --dart-define keys
 
 ```
 
-## Initialize
+## initialize()
 Initialize must take place before show() can be called.
 
 ```dart
@@ -28,4 +28,21 @@ Initialize must take place before show() can be called.
 
 ```
 
-## Show
+## show()
+Shows the Zendesk Messenger chat interface.
+
+```dart
+
+ // Add code example here
+
+```
+
+
+## webWidgetSetZIndex(int)
+[Uses the set z-index web SDK api call](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/web/sdk_api_reference/#set-zindex).
+
+Set the z-index property of the iFrame in the DOM. This can be used to move the widget behind the Flutter rendered content in order to hide the widget.
+
+By default, all iframes in the Web Widget have a z-index value of 999999.
+
+**To hide the web widget, use the `webWidgetSetZIndex(-1000)` command. Return to z-index of 999999 for it to reappear.**

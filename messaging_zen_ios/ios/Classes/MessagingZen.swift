@@ -25,8 +25,7 @@ public class MessagingZen {
                 self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Zendesk Messaging initialization was successful.")
                 completionHandler(true)
             }
-        }
-    
+        }    
     }
     
     /// Show

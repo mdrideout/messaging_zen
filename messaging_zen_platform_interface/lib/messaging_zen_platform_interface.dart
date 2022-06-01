@@ -46,5 +46,11 @@ abstract class MessagingZenPlatform extends PlatformInterface {
   });
 
   /// Show the Zendesk Messaging Interface
-  Future<bool> show({String? webScriptId});
+  Future<bool> show();
+
+  /// Set the Zendesk Messaging Web Widget Z-Index
+  void webWidgetSetZIndex({required int zIndex}) {
+    throw UnimplementedError(
+        "This method has not been implemented on this platform. webWidgetSetZIndex is for Web only.");
+  }
 }

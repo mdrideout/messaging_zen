@@ -39,3 +39,13 @@ function openZendeskMessenger() {
 
     return Promise.resolve(true);
 }
+
+/**
+ * Set the z-index of the Zendesk Messenger web widget (icon + chat)
+ * based on the web API
+ */
+function webWidgetSetZIndexJS(zIndex) {
+    zE('messenger:set', 'zIndex', zIndex);
+
+    return;
+}

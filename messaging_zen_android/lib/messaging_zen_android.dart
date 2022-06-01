@@ -26,7 +26,7 @@ class MessagingZenAndroid extends MessagingZenPlatform {
   }
 
   @override
-  Future<bool> show({String? webScriptId}) async {
+  Future<bool> show() async {
     try {
       // Call the native Kotlin code
       final bool result = await _channel.invokeMethod('show');

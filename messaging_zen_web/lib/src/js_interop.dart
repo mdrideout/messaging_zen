@@ -18,3 +18,7 @@ external Future<void> awaitScriptLoad(String scriptId);
 /// Open the Zendesk Messenger
 @JS('openZendeskMessenger')
 external Future<bool> openZendeskMessenger();
+
+/// Set Z-Index of Zendesk Messenger
+@JS('webWidgetSetZIndexJS')
+external void webWidgetSetZIndexJS(int zIndex);

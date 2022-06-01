@@ -17,7 +17,12 @@ class MethodChannelMessagingZen implements MessagingZenPlatform {
 
   /// Show the Zendesk Messaging Interface
   @override
-  Future<bool> show({String? webScriptId}) async {
+  Future<bool> show() async {
+    throw UnimplementedError();
+  }
+
+  @override
+  void webWidgetSetZIndex({required int zIndex}) {
     throw UnimplementedError();
   }
 }

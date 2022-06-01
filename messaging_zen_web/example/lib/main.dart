@@ -37,32 +37,46 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Messaging Zen Web'),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.chat),
-          onPressed: () async {
-            // Show the native Zendesk Messaging SDK view
-            await _messagingZen.show();
-          },
-        ),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text("Launch with"),
-                SizedBox(height: 10),
-                Text(
+              children: [
+                const Text("Launch with"),
+                const SizedBox(height: 10),
+                const Text(
                   '--dart-define=WEB_SCRIPT_ID=[id]',
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   '--dart-define=WEB_SCRIPT_SRC=[src]',
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10),
-                Text("to use this demo."),
+                const SizedBox(height: 10),
+                const Text("to use this demo."),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    _messagingZen.webWidgetSetZIndex(zIndex: -1000);
+                  },
+                  child: const Text("Hide Web Widget"),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    _messagingZen.webWidgetSetZIndex(zIndex: 999999);
+                  },
+                  child: const Text("Show Web Widget"),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    _messagingZen.show();
+                  },
+                  child: const Text("Show Message Box"),
+                ),
               ],
             ),
           ),

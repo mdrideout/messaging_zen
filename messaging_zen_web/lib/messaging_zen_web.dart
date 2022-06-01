@@ -72,20 +72,29 @@ class MessagingZenPlugin extends MessagingZenPlatform {
 
   /// Show Zendesk Messenger
   /// Sends the command to the Zendesk SDK API open the chat interface.
-  /// Web does not need to return a widget since the UI is injected as an iFrame overlay
   @override
-  Future<bool> show({String? webScriptId}) async {
+  Future<bool> show() async {
     try {
       // Open Zendesk Messenger
       bool result = await openZendeskMessenger();
 
-      // Return null instead of a widget
       return result;
     } catch (e) {
       logger.e(
           "Failed to open the zendesk messenger interface. The Web SDK script may not have been loaded. Has it MessagingZen been initialized?");
       rethrow;
     }
+  }
+
+  /// Set Zendesk Messenger z-index
+  /// Sends the command to the Zendesk SDK API to change the z-index for all iframes for the web widget.
+  ///
+  /// Default z-index value is 999999
+  @override
+  void webWidgetSetZIndex({required int zIndex}) {
+    webWidgetSetZIndexJS(zIndex);
+
+    return;
   }
 
   /// Inject messaging_zen JS commands

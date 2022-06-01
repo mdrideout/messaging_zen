@@ -44,7 +44,7 @@ class MessagingZenIos extends MessagingZenPlatform {
   }
 
   @override
-  Future<bool> show({String? webScriptId}) async {
+  Future<bool> show() async {
     try {
       // Call the native Swift code
       final bool result = await _channel.invokeMethod('show');

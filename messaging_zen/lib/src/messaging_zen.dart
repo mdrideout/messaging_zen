@@ -21,6 +21,11 @@ class MessagingZen {
 
   /// Show the Zendesk Messaging interface
   Future<bool> show() async {
-    return await MessagingZenPlatform.instance.show(webScriptId: webScriptId);
+    return await MessagingZenPlatform.instance.show();
+  }
+
+  /// Change the Zendesk Messaging Web Widget Z-Index
+  void webWidgetSetZIndex(int zIndex) {
+    return MessagingZenPlatform.instance.webWidgetSetZIndex(zIndex: zIndex);
   }
 }

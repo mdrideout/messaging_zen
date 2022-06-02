@@ -7,6 +7,18 @@ with Dart and JS interop, to inject the SDK and perform API commands against it.
 - Android: Implements the [Zendesk Messaging Android SDK](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/android/getting_started/)
 - iOS: Implements the [Zendesk Messaging iOS SDK](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/ios/getting_started/),
 
+# Setup
+
+## Android
+Requires permissions in the AndroidManifest
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="xxxxxx">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    ...
+```
+
 # Implementation
 
 ## Example

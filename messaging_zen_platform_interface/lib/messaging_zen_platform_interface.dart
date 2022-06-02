@@ -51,6 +51,6 @@ abstract class MessagingZenPlatform extends PlatformInterface {
   /// Set the Zendesk Messaging Web Widget Z-Index
   void webWidgetSetZIndex({required int zIndex}) {
     throw UnimplementedError(
-        "This method has not been implemented on this platform. webWidgetSetZIndex is for Web only.");
+        "This method has not been implemented on this platform. webWidgetSetZIndex should only be called on Web. Consider adding a kIsWeb condition.");
   }
 }

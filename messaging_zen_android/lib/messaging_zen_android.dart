@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:messaging_zen_platform_interface/messaging_zen_platform_interface.dart';
 
+import 'method_call_handler.dart';
+
 /// A named channel for communicating with platform plugins using asynchronous method calls.
 const MethodChannel _channel = MethodChannel('plugins.flutter.io/messaging_zen_android');
 
@@ -20,9 +22,24 @@ class MessagingZenAndroid extends MessagingZenPlatform {
     String? webScriptSrc,
     String? iosChannelKey,
     String? androidChannelKey,
-  }) {
-    // TODO: implement initialize
-    throw UnimplementedError('TODO: Implement android implementation of initialize()');
+  }) async {
+    assert(
+      (androidChannelKey != null && androidChannelKey != ""),
+      "messaging_zen_android implementation requires an androidChannelKey to initialize",
+    );
+
+    try {
+      // Start observing channel messages (made from native code back to Flutter)
+      _channel.setMethodCallHandler(methodCallHandler);
+
+      // Call the native initialize function
+      final bool result = await _channel.invokeMethod('initialize', {"key": androidChannelKey});
+
+      return result;
+    } catch (e) {
+      debugPrint("Initialize call to android / kotlin platform failed.");
+      rethrow;
+    }
   }
 
   @override
@@ -33,7 +50,7 @@ class MessagingZenAndroid extends MessagingZenPlatform {
 
       return result;
     } catch (e) {
-      debugPrint("Initialize call to android platform failed.");
+      debugPrint("Initialize call to android / kotlin platform failed.");
       rethrow;
     }
   }

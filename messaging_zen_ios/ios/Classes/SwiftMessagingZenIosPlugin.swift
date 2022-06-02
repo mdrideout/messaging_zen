@@ -2,10 +2,6 @@ import Flutter
 import UIKit
 
 public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
-    enum InvokableMethods: String {
-        case logger = "logger"
-    }
-
     let TAG = "[SwiftMessagingZenIosPlugin]"
     private var channel: FlutterMethodChannel
     
@@ -27,11 +23,11 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
         let arguments = call.arguments as? Dictionary<String, Any>
         
         // Create a MessagingZen instance and pass our FlutterMethodChannel so that it can communicate back to Flutter
-        let messagingZen = MessagingZen(channel: channel, plugin: self);
+        let messagingZen = MessagingZen(channel: channel);
         
         switch(method) {
         case "initialize":
-            self.channel.invokeMethod(InvokableMethods.logger.rawValue, arguments: "\(TAG) - Calling messagingZen.initialize()")
+            self.channel.invokeMethod("logger", arguments: "\(TAG) - Calling messagingZen.initialize()")
             let key: String = (arguments?["key"] ?? "") as! String
             
             // Pass the FlutterResult closure to the initialize function
@@ -39,7 +35,7 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
             break
             
         case "show":
-            self.channel.invokeMethod(InvokableMethods.logger.rawValue, arguments: "\(TAG) - Calling messagingZen.show()")
+            self.channel.invokeMethod("logger", arguments: "\(TAG) - Calling messagingZen.show()")
             
             // Pass the FlutterResult closure to the show function
             messagingZen.show(completionHandler: result)

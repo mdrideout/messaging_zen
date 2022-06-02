@@ -5,17 +5,15 @@ public class MessagingZen {
     let TAG = "[MessagingZen]"
     
     private var channel: FlutterMethodChannel? = nil
-    private var plugin: SwiftMessagingZenIosPlugin? = nil
-    init(channel: FlutterMethodChannel, plugin: SwiftMessagingZenIosPlugin) {
+    init(channel: FlutterMethodChannel) {
         self.channel = channel
-        self.plugin = plugin
     }
     
     /// Initialize
     /// Calls Zendesk.initialize with the channel key, and it's completion handler uses the provided
     /// closure [FlutterResult] to return the result back to Flutter.
     func initialize(key: String, completionHandler: @escaping FlutterResult){
-        self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Initializing MessagingZen with iOS key: \(key)\n")
+        self.channel?.invokeMethod("logger", arguments: "\(self.TAG) - Initializing Zendesk Messaging with key: \(key)\n")
         
         Zendesk.initialize(withChannelKey: key, messagingFactory: DefaultMessagingFactory()) { result in
             if case let .failure(error) = result {

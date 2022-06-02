@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:messaging_zen_ios/util/logger.dart';
 
 /// Invokable Methods Enum
 /// Enums of methods that the platform can invoke against the Flutter method handler
@@ -24,12 +23,12 @@ Future<dynamic> methodCallHandler(MethodCall call) async {
   switch (methodEnum) {
     case InvokableMethodsEnum.logger:
       {
-        logger.d(arguments);
+        debugPrint(arguments);
         break;
       }
 
     default:
-      logger.e(
+      debugPrint(
           "methodCallHandler call.method of $method has no matching case for the MethdCall from the native platform.");
       break;
   }

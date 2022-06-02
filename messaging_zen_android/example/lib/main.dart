@@ -1,7 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:messaging_zen_android/messaging_zen_android.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,31 +13,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  final MessagingZenAndroid _messagingZen = MessagingZenAndroid();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      // TODO: Example
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
+    // Get channel key from env variable
+    const androidChannelKey = String.fromEnvironment('ANDROID_CHANNEL_KEY');
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {});
+    // Initialize MessagingZen
+    _messagingZen.initialize(androidChannelKey: androidChannelKey);
   }
 
   @override
@@ -47,10 +31,32 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Messaging Zen Android'),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.chat),
+          onPressed: () async {
+            // Show the native Zendesk Messaging SDK view
+            await _messagingZen.show();
+          },
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text("Launch with"),
+                SizedBox(height: 10),
+                Text(
+                  '--dart-define=ANDROID_CHANNEL_KEY=[your_key]',
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 10),
+                Text("to use this demo."),
+              ],
+            ),
+          ),
         ),
       ),
     );

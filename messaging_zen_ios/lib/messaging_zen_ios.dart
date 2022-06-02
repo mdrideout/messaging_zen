@@ -24,14 +24,12 @@ class MessagingZenIos extends MessagingZenPlatform {
   }) async {
     assert(
       (iosChannelKey != null && iosChannelKey != ""),
-      "messaging_zen_ios implementation requires an iosChannelKey",
+      "messaging_zen_ios implementation requires an iosChannelKey to initialize",
     );
 
     try {
       // Start observing channel messages (made from native code back to Flutter)
       _channel.setMethodCallHandler(methodCallHandler);
-
-      debugPrint("Calling iOS platform initialize function with key: $iosChannelKey");
 
       // Call the native initialize function
       final bool result = await _channel.invokeMethod('initialize', {"key": iosChannelKey});

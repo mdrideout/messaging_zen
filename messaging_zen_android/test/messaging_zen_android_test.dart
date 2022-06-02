@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:messaging_zen_android/messaging_zen_android.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('messaging_zen_android');
@@ -15,9 +14,5 @@ void main() {
 
   tearDown(() {
     channel.setMockMethodCallHandler(null);
-  });
-
-  test('getPlatformVersion', () async {
-    expect(await MessagingZenAndroid.platformVersion, '42');
   });
 }

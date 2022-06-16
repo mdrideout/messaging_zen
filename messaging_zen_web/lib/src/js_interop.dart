@@ -22,3 +22,11 @@ external Future<bool> openZendeskMessenger();
 /// Set Z-Index of Zendesk Messenger
 @JS('webWidgetSetZIndexJS')
 external void webWidgetSetZIndexJS(int zIndex);
+
+/// Set Locale of Zendesk Messenger
+@JS('webWidgetSetLocaleJS')
+external void webWidgetSetLocaleJS(String languageTag);
+
+/// Reset cookies of Zendesk Messenger
+@JS('webWidgetResetCookiesJS')
+external void webWidgetResetCookiesJS();

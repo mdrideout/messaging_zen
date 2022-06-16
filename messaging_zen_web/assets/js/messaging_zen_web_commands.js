@@ -36,8 +36,17 @@ function awaitScriptLoad(scriptId) {
  */
 function openZendeskMessenger() {
     zE('messenger', 'open');
-
     return Promise.resolve(true);
+}
+
+/**
+ * webWidgetResetCookies Zendesk Messenger
+ * Uses the set cookies API command, first to false, then to true, to clear and restart the instance history.
+ */
+function webWidgetResetCookiesJS() {
+    zE('messenger:set', 'cookies', false);
+    zE('messenger:set', 'cookies', true);
+    return;
 }
 
 /**
@@ -46,6 +55,20 @@ function openZendeskMessenger() {
  */
 function webWidgetSetZIndexJS(zIndex) {
     zE('messenger:set', 'zIndex', zIndex);
+    return;
+}
 
+/**
+ * Set the locale of the Zendesk Messenger web widget
+ * based on the web API
+ */
+function webWidgetSetLocaleJS(languageTag) {
+    console.log("Setting web widget locale to " + languageTag);
+
+    if (languageTag != null && languageTag != "") {
+        zE('messenger:set', 'cookies', false);
+        zE('messenger:set', 'locale', languageTag);
+        zE('messenger:set', 'cookies', true);
+    }
     return;
 }

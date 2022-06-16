@@ -36,6 +36,17 @@ class _MyAppState extends State<MyApp> {
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.chat),
           onPressed: () async {
+            // // Invalidate MessagingZen instance
+            // _messagingZeniOS.invalidate();
+            //
+            // await Future.delayed(const Duration(seconds: 3));
+            //
+            // // Get channel key from env variable
+            // const iosChannelKey2 = String.fromEnvironment('IOS_CHANNEL_KEY');
+            //
+            // // Initialize MessagingZen
+            // await _messagingZeniOS.initialize(iosChannelKey: iosChannelKey2);
+
             // Show the native Zendesk Messaging SDK view
             await _messagingZeniOS.show();
           },

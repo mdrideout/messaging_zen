@@ -41,6 +41,13 @@ public class SwiftMessagingZenIosPlugin: NSObject, FlutterPlugin {
             messagingZen.show(completionHandler: result)
             break
             
+//        case "invalidate":
+//            self.channel.invokeMethod("logger", arguments: "\(TAG) - Calling messagingZen.invalidate()")
+//            
+//            // Pass the FlutterResult closure to the show function
+//            messagingZen.invalidate(completionHandler: result)
+//            break
+            
         default: result(FlutterMethodNotImplemented)
         }
     }

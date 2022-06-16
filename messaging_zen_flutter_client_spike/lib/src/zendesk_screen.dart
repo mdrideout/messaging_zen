@@ -13,6 +13,7 @@ class ZendeskScreen extends StatefulWidget {
 
 class _ZendeskScreenState extends State<ZendeskScreen> {
   final MessagingZen _messagingZen = MessagingZen(
+    nickname: "default",
     webScriptId: messagingZenWebScriptId,
     webScriptSrc: messagingZenWebScriptSrc,
     androidChannelKey: messagingZenAndroidChannelKey,

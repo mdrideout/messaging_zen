@@ -15,14 +15,28 @@ class MethodChannelMessagingZen implements MessagingZenPlatform {
     throw UnimplementedError();
   }
 
-  /// Show the Zendesk Messaging Interface
   @override
   Future<bool> show() async {
     throw UnimplementedError();
   }
 
   @override
+  void webRefreshBrowser() {
+    throw UnimplementedError();
+  }
+
+  @override
+  void webWidgetResetCookies() {
+    throw UnimplementedError();
+  }
+
+  @override
   void webWidgetSetZIndex({required int zIndex}) {
+    throw UnimplementedError();
+  }
+
+  @override
+  void webWidgetSetLocale({required String languageTag}) {
     throw UnimplementedError();
   }
 }

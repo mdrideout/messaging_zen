@@ -15,14 +15,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final MessagingZenPlugin _messagingZen = MessagingZenPlugin();
 
-  @override
-  void initState() {
-    super.initState();
-
-    // Get web script info from --dart-define variables
-    const String webScriptId = String.fromEnvironment('WEB_SCRIPT_ID');
-    const String webScriptSrc = String.fromEnvironment('WEB_SCRIPT_SRC');
-
+  /// Initialize
+  void initialize({required String webScriptId, required String webScriptSrc}) {
     // Initialize MessagingZen
     _messagingZen.initialize(
       webScriptId: webScriptId,
@@ -31,7 +25,21 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    // Get web script info from --dart-define variables
+    const String webScriptId = String.fromEnvironment('WEB_SCRIPT_ID');
+    const String webScriptSrc = String.fromEnvironment('WEB_SCRIPT_SRC');
+
+    initialize(webScriptId: webScriptId, webScriptSrc: webScriptSrc);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    const String webScriptId = String.fromEnvironment('WEB_SCRIPT_ID');
+    const String webScriptSrc = String.fromEnvironment('WEB_SCRIPT_SRC');
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -77,6 +85,20 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: const Text("Show Message Box"),
                 ),
+                // const SizedBox(height: 10),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     _messagingZen.invalidate(webScriptId: webScriptId);
+                //   },
+                //   child: const Text("Invalidate / Remove SDK"),
+                // ),
+                // const SizedBox(height: 10),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     initialize(webScriptId: webScriptId, webScriptSrc: webScriptSrc);
+                //   },
+                //   child: const Text("Initialize / Add SDK"),
+                // ),
               ],
             ),
           ),

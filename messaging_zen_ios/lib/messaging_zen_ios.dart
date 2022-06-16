@@ -53,4 +53,17 @@ class MessagingZenIos extends MessagingZenPlatform {
       rethrow;
     }
   }
+
+  // @override
+  // Future<bool> invalidate() async {
+  //   try {
+  //     // Call the native Swift code
+  //     final bool result = await _channel.invokeMethod('invalidate');
+  //
+  //     return result;
+  //   } catch (e) {
+  //     debugPrint("invalidate call to ios / swift platform failed.");
+  //     rethrow;
+  //   }
+  // }
 }

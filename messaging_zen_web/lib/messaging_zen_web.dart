@@ -1,3 +1,5 @@
+import 'dart:html' as html;
+
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:messaging_zen_platform_interface/messaging_zen_platform_interface.dart';
@@ -86,6 +88,55 @@ class MessagingZenPlugin extends MessagingZenPlatform {
     }
   }
 
+  /// Refresh Page
+  /// Refreshes the webpage which is necessessary if we are changing Web SDK Messaging channel Keys
+  @override
+  void webRefreshBrowser() {
+    html.window.location.reload();
+  }
+
+  // DOES NOT WORK, SCRIPT REMAINS IN MEMORY AND CAN BE EXECUTED AGAINST.
+  // /// Invalidate Zendesk Messenger
+  // /// On Web, this removes the Web SDK from the DOM
+  // /// Must be async to match other platforms
+  // @override
+  // Future<bool> invalidate({String? webScriptId}) async {
+  //   assert(
+  //     (webScriptId != null && webScriptId != ""),
+  //     "messaging_zen_web invalidate implementation requires an webScriptId",
+  //   );
+  //
+  //   // Localize variables needed for invalidation on web
+  //   final String? _webScriptId = webScriptId;
+  //
+  //   // Null / Empty Checks (for default environment value of "")
+  //   if (_webScriptId == null || _webScriptId == "") {
+  //     throw ("webScriptSrc cannot be null or \"\".");
+  //   }
+  //
+  //   try {
+  //     logger.d("Invalidating the messaging_zen_web Zendesk Messaging SDK.");
+  //
+  //     // Remove the script from the SDK
+  //     bool removed = removeScriptFromDom(_webScriptId);
+  //
+  //     return removed;
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
+  /// Set Zendesk Messenger Locale
+  /// Sends the command to the Zendesk SDK API to change the locale.
+  ///
+  /// If this is not called, it defaults to the browser language.
+  /// [languageTag] is formatted such as "en-US" or "es-ES" with a hyphen.
+  @override
+  void webWidgetSetLocale({required String languageTag}) {
+    webWidgetSetLocaleJS(languageTag);
+    return;
+  }
+
   /// Set Zendesk Messenger z-index
   /// Sends the command to the Zendesk SDK API to change the z-index for all iframes for the web widget.
   ///
@@ -93,7 +144,14 @@ class MessagingZenPlugin extends MessagingZenPlatform {
   @override
   void webWidgetSetZIndex({required int zIndex}) {
     webWidgetSetZIndexJS(zIndex);
+    return;
+  }
 
+  /// Zendesk Messenger reset cookies
+  /// Sends the command to the Zendesk Web SDK API to disable and re-enable cookies, clearing the chat history.
+  @override
+  void webWidgetResetCookies() {
+    webWidgetResetCookiesJS();
     return;
   }
 

@@ -48,9 +48,27 @@ abstract class MessagingZenPlatform extends PlatformInterface {
   /// Show the Zendesk Messaging Interface
   Future<bool> show();
 
+  /// Refresh the browser
+  void webRefreshBrowser() {
+    throw UnimplementedError(
+        "This method has not been implemented on this platform. webRefreshBrowser should only be called on Web. Consider adding a kIsWeb condition.");
+  }
+
+  /// Reset Cookies on the Web Widget to clear the chat
+  void webWidgetResetCookies() {
+    throw UnimplementedError(
+        "This method has not been implemented on this platform. webWidgetResetCookies should only be called on Web. Consider adding a kIsWeb condition.");
+  }
+
   /// Set the Zendesk Messaging Web Widget Z-Index
   void webWidgetSetZIndex({required int zIndex}) {
     throw UnimplementedError(
         "This method has not been implemented on this platform. webWidgetSetZIndex should only be called on Web. Consider adding a kIsWeb condition.");
+  }
+
+  /// Set the Zendesk Messaging Web Widget Locale
+  void webWidgetSetLocale({required String languageTag}) {
+    throw UnimplementedError(
+        "This method has not been implemented on this platform. webWidgetSetLocale should only be called on Web. Consider adding a kIsWeb condition.");
   }
 }

@@ -18,7 +18,6 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  logger: ^1.1.0
   messaging_zen_platform_interface:
     path: ../messaging_zen_platform_interface
 

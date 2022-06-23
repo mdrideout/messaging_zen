@@ -1,0 +1,65 @@
+PODS:
+  - Flutter (1.0.0)
+  - messaging_zen_ios (0.0.1):
+    - Flutter
+    - ZendeskSDKMessaging (~> 2.4.0)
+  - Zendesk (1.4.1):
+    - ZendeskSDKConversationKit (~> 1.2.0)
+  - ZendeskSDKConversationKit (1.2.0):
+    - ZendeskSDKFayeClient (~> 1.1.0)
+    - ZendeskSDKHTTPClient (~> 0.6.0)
+    - ZendeskSDKStorage (~> 0.4.4)
+  - ZendeskSDKFayeClient (1.1.0):
+    - ZendeskSDKLogger (~> 0.4.3)
+    - ZendeskSDKSocketClient (~> 1.1.0)
+  - ZendeskSDKHTTPClient (0.6.0):
+    - ZendeskSDKLogger (~> 0.4.3)
+  - ZendeskSDKLogger (0.4.3)
+  - ZendeskSDKMessaging (2.4.1):
+    - Zendesk (~> 1.4.1)
+    - ZendeskSDKConversationKit (~> 1.2.0)
+    - ZendeskSDKUIComponents (~> 1.1.0)
+  - ZendeskSDKSocketClient (1.1.0):
+    - ZendeskSDKLogger (~> 0.4.3)
+  - ZendeskSDKStorage (0.4.4):
+    - ZendeskSDKLogger (~> 0.4.3)
+  - ZendeskSDKUIComponents (1.1.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - messaging_zen_ios (from `.symlinks/plugins/messaging_zen_ios/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Zendesk
+    - ZendeskSDKConversationKit
+    - ZendeskSDKFayeClient
+    - ZendeskSDKHTTPClient
+    - ZendeskSDKLogger
+    - ZendeskSDKMessaging
+    - ZendeskSDKSocketClient
+    - ZendeskSDKStorage
+    - ZendeskSDKUIComponents
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  messaging_zen_ios:
+    :path: ".symlinks/plugins/messaging_zen_ios/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  messaging_zen_ios: f71599cad89db454a81e4b73db989e1593dc33a6
+  Zendesk: 25eb86dcd5a9a54d8f9c581072da7c1d12810ccf
+  ZendeskSDKConversationKit: 1b62385f6c2b39bac66405322122c1ce02536aa1
+  ZendeskSDKFayeClient: 7b2c60eff19c5a8752284997007af49fe9ce8851
+  ZendeskSDKHTTPClient: bcdf5f283b67a1951687fcd4cc452213226b127c
+  ZendeskSDKLogger: 1eb208475583b94571d651f74a70e7d762cdfa1c
+  ZendeskSDKMessaging: 181b68d184786039b54c11249d86415f54551eaf
+  ZendeskSDKSocketClient: f88a8b55fa592f694593bf6396ffc4884e778281
+  ZendeskSDKStorage: b310557446bbfd7508c0500fea0cf29d2c7692bd
+  ZendeskSDKUIComponents: 6b8e10e96a82bd28bf8eb75c92533d76c1528817
+
+PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
+
+COCOAPODS: 1.11.3

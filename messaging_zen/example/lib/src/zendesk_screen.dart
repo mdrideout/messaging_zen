@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:messaging_zen/messaging_zen.dart';
-import 'package:messaging_zen_flutter_client_spike/src/common/constants.dart';
+
+import 'common/constants.dart';
 
 class ZendeskScreen extends StatefulWidget {
   const ZendeskScreen({Key? key}) : super(key: key);
@@ -34,19 +36,21 @@ class _ZendeskScreenState extends State<ZendeskScreen> {
       appBar: AppBar(
         title: const Text("Messaging Zen Demo"),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.chat),
-        onPressed: () async {
-          // Show the native Zendesk Messaging SDK view
-          await _messagingZen.show();
-        },
-      ),
+      floatingActionButton: (kIsWeb)
+          ? null
+          : FloatingActionButton(
+              child: const Icon(Icons.chat),
+              onPressed: () async {
+                // Show the native Zendesk Messaging SDK view
+                await _messagingZen.show();
+              },
+            ),
       body: Center(
         child: Column(
           children: const [
             SizedBox(height: 10.0),
             Text(
-              "Cross-Platform\nZendesk Messaging SDK Implementation\niOS, Android, Web",
+              "Cross-Platform\nZendesk Messaging SDK Implementation\niOS, Android, Web\n\nSee platform specific examples for more.",
               textAlign: TextAlign.center,
             ),
           ],
